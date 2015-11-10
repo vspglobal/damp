@@ -1,0 +1,56 @@
+<div class="modal-header">
+    <h3 class="modal-title">Route</h3>
+</div>
+<form class="form-horizontal">
+    <div class="modal-body">
+        <div class="form-group">
+            <label for="routeMethod" class="col-sm-2 control-label">Method</label>
+            <div class="col-sm-5">
+                <ui-select id="routeMethod" ng-model="route.method" theme="bootstrap" style="width: 200px;" search-enabled="false" >
+                    <ui-select-match >{{$select.selected}}</ui-select-match>
+                    <ui-select-choices repeat="method in methods">
+                        <span ng-bind-html="method"></span>
+                    </ui-select-choices>
+                </ui-select>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="routePath" class="col-sm-2 control-label">Path</label>
+            <div class="col-sm-5">
+                <input type="text" class="form-control" id="routePath" placeholder="" ng-model="route.path">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="routeDelay" class="col-sm-2 control-label">Delay</label>
+            <div class="col-sm-5">
+                <input type="number" class="form-control" id="routeDelay" placeholder="" ng-model="route.delay">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="action" class="col-sm-2 control-label">Action</label>
+            <div class="col-sm-5">
+                <div id="action" class="btn-group">
+                    <label class="btn btn-primary" ng-model="route.action" uib-btn-radio="'Proxy'" >Proxy</label>
+                    <label class="btn btn-primary" ng-model="route.action" uib-btn-radio="'Reply'" >Reply</label>
+                </div>
+            </div>
+        </div>
+        <div class="form-group" ng-if="route.action == 'Reply'">
+            <label for="routeStatus" class="col-sm-2 control-label">Status</label>
+            <div class="col-sm-5">
+                <input type="number" class="form-control" id="routeStatus" placeholder="" ng-model="route.status">
+            </div>
+        </div>
+        <div class="form-group" ng-if="route.action == 'Proxy'">
+            <label for="routeTarget" class="col-sm-2 control-label">Target</label>
+            <div class="col-sm-5">
+                <input type="text" class="form-control" id="routeTarget" placeholder="" ng-model="route.target">
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-primary" type="button" ng-click="ok()">Submit</button>
+        <button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
+    </div>
+</form>
+

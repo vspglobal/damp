@@ -1,6 +1,8 @@
 ![Damp](damper.png) 
 
 # DAMP 
+[![NPM version][npm-version-image]][npm-url] [![Apache2 License][license-image]][license-url] [![Build Status][travis-image]][travis-url]
+
 ```
 (verb) - /dæmp/ -  to check or retard the energy, action, etc., of; deaden; dampen; to stifle or suffocate; extinguish
 ```
@@ -50,12 +52,15 @@ Start the proxy by running `damp`.  Configuration can be provided by environment
 -c, --config | CONFIG_PATH | .damp.yml | Path to proxy config 
 -a, --appconfig | APP_CONFIG_PATH | $(os.tmpdir)/damp/ | Path to app proxy configs 
 -X, --appheader | APP_HEADER | X-TransactionId | Header to use for app routesets
--t, --target | DEFAULT_TARGET |  https://api-sandbox.vsp.com | Proxy target
+-t, --target | DEFAULT_TARGET |  http://localhost:8080 | Proxy target
 -d, --delay | DEFAULT_DELAY | 0 | Delay in milliseconds
 -p, --port | PORT | 8000 | Port to listen on
 
 # Configuration via UI
-A user interface exists for managing application specific configuration.  A shared instance exists at [http://damp.vspglobal.com](http://damp.vspglobal.com).  When running locally, you can access it at [http://localhost:8000](http://localhost:8000).
+A user interface exists for managing application specific configuration.  DAMP can be run as a shared service in your testing environment.  For example inside VSP we have a shared instance available at [http://damp.vspglobal.com](http://damp.vspglobal.com).  When running locally, you can access it at [http://localhost:8000](http://localhost:8000).
+
+![Damp UI](damp-ui.png) 
+
 
 # Configuration via YAML
 You can configure specific paths in a YAML file.  By default, it looks for a file named **.damp.yml** in the current directory.  Here's a sample file with a couple paths, one with a custom delay and another with a custom status code:
@@ -122,14 +127,18 @@ Please [create an issue](https://github.com/vspglobal/damp/issues) for any bugs 
 # Contributing
 [Pull requests](http://help.github.com/send-pull-requests) are welcome; see the [contributor guidelines](CONTRIBUTING.md) for details.
 
-To update the docker images, run:
-
-```
-./docker_build.sh
-```
 
 # License
 IP is licensed under the [Apache License, Version 2.0](http://www.apache.org/licenses/LICENSE-2.0).
 
 For additional information, see the [LICENSE](LICENSE) file.
+
   
+[license-image]: http://img.shields.io/badge/license-APACHE2-blue.svg?style=flat
+[license-url]: LICENSE
+
+[npm-url]: https://npmjs.org/package/damp
+[npm-version-image]: http://img.shields.io/npm/v/damp.svg?style=flat
+
+[travis-url]: http://travis-ci.org/vspglobal/damp
+[travis-image]: http://img.shields.io/travis/vspglobal/damp.svg?style=flat

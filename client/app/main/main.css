@@ -1,0 +1,92 @@
+.thing-form {
+    margin: 20px 0;
+}
+
+#banner {
+    border-bottom: none;
+    margin-top: -20px;
+}
+
+#banner h1 {
+    font-size: 60px;
+    line-height: 1;
+    letter-spacing: -1px;
+}
+
+.hero-unit {
+    position: relative;
+    padding: 30px 15px;
+    color: #F5F5F5;
+    text-align: center;
+    text-shadow: 0 1px 0 rgba(0, 0, 0, 0.1);
+    background: #486d3c;
+}
+
+thead  {
+    background: #8fd57b;
+    color: #F5F5F5;
+
+}
+
+.footer {
+    text-align: center;
+    padding: 30px 0;
+    margin-top: 70px;
+    border-top: 1px solid #E5E5E5;
+}
+
+.navbar-text {
+    margin-left: 15px;
+}
+
+.big-checkbox {
+  zoom: 2
+}
+
+.routesetTable {
+  border-collapse: collapse;
+}
+
+.routesetHeader {
+    background-color: #eefee8;
+}
+
+#loading-bar .bar {
+  background: #fff;
+}
+#loading-bar-spinner .spinner-icon {
+  border-top-color:  #fff;
+  border-left-color: #fff;
+}
+#loading-bar .peg {
+  -moz-box-shadow: #fff 1px 0 6px 1px;
+  -ms-box-shadow: #fff 1px 0 6px 1px;
+  -webkit-box-shadow: #fff 1px 0 6px 1px;
+  box-shadow: #fff 1px 0 6px 1px;
+}
+
+.loading-spinner {
+  -webkit-animation:spin 1s linear infinite;
+  -moz-animation:spin 1s linear infinite;
+  animation:spin 1s linear infinite;
+}
+
+.deploymentTable {
+  text-align: center;
+}
+
+
+.rowExpandedCell {
+  padding: 0px !important;
+  padding-bottom: 8px !important;
+  padding-right: 8px !important;
+}
+.routesetDetailContainer {
+  background-color: rgba(141,192,219,.25);
+  width: 100%;
+  padding: 10px;
+  border-bottom: dashed thin black;
+  border-left: dashed thin black;
+  border-right: dashed thin black;
+}
+

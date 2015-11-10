@@ -1,0 +1,34 @@
+<div class="modal-body">
+    <h4>Damp</h4>
+    <code>
+    (verb) - /dæmp/ -  to check or retard the energy, action, etc., of;<br/>
+                    deaden; dampen; to stifle or suffocate; extinguish
+    </code>
+    <br/> <br/>
+    This is a utility to control the responses from APIs via a proxy through various configuration mechanisms. You can force errors or delays on specific API invocations.  Also known as the <u>D</u>ynamically <u>A</u>rranged <u>M</u>ocking <u>P</u>roxy.
+
+    <h4>Request Routing</h4>
+    Every request that arrives at the proxy runs through a series of routes and applies <b>ALL</b> routes that match the <kbd>path</kbd> (in order of most specific path to least specific) until either a <kbd>status</kbd> or <kbd>target</kbd> route is found.
+
+    Routesets are loaded in the following order:
+    <br/><br/>
+
+    <ul>
+    <li><b>Request Routeset</b> - The request is interrogated to determine if a specific routeset is configured.  This is done in the follow order and once a routeset is matched, it is used and the subsequent steps are skipped:</li>
+        <ul>
+            <li><kbd>{{appheader}}</kbd> <b>with</b> <kbd>damp-appname</kbd> - if the request has a <kbd>{{appheader}}</kbd> header value like <kbd>damp-appname:myapp</kbd> then a routeset named <b>myapp</b> is loaded (ie. /_api/routesets/myapp).  If it exists, it will be used.</li>
+            <li><kbd>{{appheader}}</kbd> <b>with</b> <kbd>damp-routeset</kbd> - if the request has a <kbd>{{appheader}}</kbd> header value matching <kbd>damp-routeset:base64</kbd> then a routeset is decoded from the Base64 encoded JSON in <b>base64</b> and will then be used.</li>
+            <li><kbd>Host</kbd> <b>header</b> - if the request has a <kbd>Host</kbd> header with name matching <kbd>myapp.damp.vspglobal.com</kbd> (which resolved from the *.damp.vspglobal.com wildcard DNS), then a routeset named *myapp* is loaded.  If it exists, it will be used.</li>
+        </ul>
+        <li><b>Static Routeset</b> - After all the routes in the <b>Request Routeset</b> resolve, if no <kbd>target</kbd> or <kbd>status</kbd> routes are found, then the static routeset is loaded from the <kbd>config</kbd> option provided at runtime.</li>
+        <li><b>Default Routeset</b> - After all the routes in the <b>Request Routeset</b> resolve and the routes in the <b>Static Routeset</b> resolve, if no <kbd>target</kbd> or <kbd>status</kbd> routes are found, then the default route is resolved based on the <kbd>delay</kbd> and <kbd>target</kbd> provided at runtime.</li>
+    </ul>
+
+    <h4>More Details</h4>
+    To learn more about how to run damp locally or for information on contributing to it, check out <a href="https://github.com/vspglobal/damp" target="_blank">http://git.vsp.com/projects/NPM/repos/damp/</a>.
+
+</div>
+<div class="modal-footer">
+    <button class="btn btn-primary" type="button" ng-click="ok()">Close</button>
+</div>
+

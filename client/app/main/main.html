@@ -1,0 +1,57 @@
+<header class="hero-unit" id="banner">
+    <div class="container">
+        <div class="row text-left">
+            <div class="col-md-4">
+                App
+            </div>
+        </div>
+        <div class="row text-left">
+            <div class="col-md-4">
+                <input class="form-control" type="text" ng-model="query" ng-change="updateRoutes()"
+                       ng-disabled="loading"
+                       ng-model-options="{updateOn : 'change blur'}"
+                        />
+            </div>
+            <div class="col-md-2">
+                <button type="button" class="btn btn-success" title="Add new app"  ng-click="createApp()"><span class="glyphicon glyphicon-plus-sign"></span></button>
+                <a href="http://splunkit.vsp.com/en-US/app/search/search?q=search%20process%3Ddamp&earliest=-60m%40m&latest=now" target="_blank"
+                            class="btn btn-info" title="Splunk logs" target="_blank">
+                    <span class="glyphicon glyphicon-tasks"></span>
+                </a>
+                <button type="button" class="btn btn-warning" title="Help"  ng-click="showHelp()"><span class="glyphicon glyphicon-question-sign"></span></button>
+            </div>
+        </div>
+    </div>
+</header>
+
+
+<table ng-table="routeTable" class="table ng-table-responsive routeTable" ng-show="routesets.length">
+    <tbody ng-repeat="routeset in routesets | orderBy:'name'">
+    <tr class="ng-table-group routesetHeader">
+        <td colspan="{{$columns.length-1}}">
+            <a href="" ng-click="routeset.$hideRows = !routeset.$hideRows">
+                <span class="glyphicon"
+                      ng-class="{ 'glyphicon-chevron-right': routeset.$hideRows, 'glyphicon-chevron-down': !routeset.$hideRows }"></span>
+                <strong>{{ routeset.name || '-'}}</strong>&nbsp;<span class="badge">{{routeset.routes.length}}</span>
+            </a>
+        </td>
+        <td>
+            <button type="button" class="btn btn-success" title="Add new route" ng-hide="routeset.name == '_default_'" ng-click="createRoute(routeset)"><span class="glyphicon glyphicon-plus-sign"></span></button>
+            <button type="button" class="btn btn-danger" title="Delete app" ng-hide="routeset.name == '_default_'" ng-click="deleteRouteset(routeset)"><span class="glyphicon glyphicon-minus-sign"></span></button>
+        </td>
+    </tr>
+    <tr ng-hide="routeset.$hideRows" ng-repeat="route in routeset.routes">
+        <td data-title="'App'" sortable="'routeset'">&nbsp;</td>
+        <td data-title="'Method'" sortable="'method'" class="text-center"> <span class="label" ng-class="route.methodStyle" ng-if="route.method">{{ route.method }}</span> </td>
+        <td data-title="'Path'" sortable="'path'">{{ route.path }}</td>
+        <td data-title="'Delay'" sortable="'delay'" class="text-center">{{ route.delay }}</td>
+        <td data-title="'Response Status'" sortable="'status'" class="text-center"><span class="label" ng-class="route.statusStyle" ng-if="route.status">{{ route.status }}</span></td>
+        <td data-title="'Target'" sortable="'target'" >{{ route.target }}</td>
+        <td data-title="''">
+            <button type="button" class="btn btn-primary" title="Edit route"  ng-hide="routeset.name == '_default_'" ng-click="updateRoute(route)"><span class="glyphicon glyphicon-edit"></span></button>
+            <button type="button" class="btn btn-danger" title="Delete route"  ng-hide="routeset.name == '_default_'" ng-click="deleteRoute(route)"><span class="glyphicon glyphicon-minus-sign"></span></button>
+        </td>
+    </tr>
+    </tbody>
+</table>
+

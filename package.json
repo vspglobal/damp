@@ -1,9 +1,9 @@
 {
   "name": "damp",
-  "version": "1.0.11",
+  "version": "1.0.12",
   "description": "Virtual Proxy for Mocking Services",
   "main": "bin/main.js",
-  "author": "casele@vsp.com",
+  "author": "cplee@nektos.com",
   "license": "Apache-2.0",
   "repository": {
     "type": "git",
@@ -60,6 +60,7 @@
     "time-grunt": "^1.2.2"
   },
   "scripts": {
+    "test": "grunt test",
     "postinstall": "./node_modules/bower/bin/bower install"
   }
 }

@@ -1,0 +1,22 @@
+<div class="modal-header">
+    <h3 class="modal-title">New App</h3>
+</div>
+<form class="form-horizontal" name="createApp" novalidate>
+    <div class="modal-body">
+        <div class="form-group">
+            <label for="inputName" class="col-sm-2 control-label">Name</label>
+            <div class="col-sm-10 has-feedback" ng-class="{'has-success': createApp.name.$valid, 'has-error': !createApp.name.$valid}">
+                <input type="text" class="form-control ng-valid ng-dirty ng-valid-parse ng-touched" uib-tooltip="Valid characters include letters, numbers and '-'"
+                       tooltip-placement="top" tooltip-trigger="mouseenter" tooltip-enable="!createApp.name.$valid" id="inputName" placeholder=""
+                       name="name" ng-model="routeset.name" required ng-pattern="/^[a-z0-9-]+$/" aria-describedby="nameSuccessStatus">
+                <span class="glyphicon form-control-feedback" aria-hidden="true" ng-class="{'glyphicon-ok': createApp.name.$valid, 'glyphicon-remove': !createApp.name.$valid}"></span>
+                <span id="nameSuccessStatus" class="sr-only">(success)</span>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-primary" type="button" ng-click="ok()" ng-disabled="!createApp.$valid">Create</button>
+        <button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
+    </div>
+</form>
+
